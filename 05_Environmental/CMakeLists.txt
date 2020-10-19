@@ -21,4 +21,8 @@ else ()
 	add_definitions (-DUTF_ENCODING=1)
 endif ()
 
+add_custom_target(allclean
+    COMMAND rm -rf CMakeFiles cmake_install.cmake CMakeCache.txt Window Makefile
+)
+
 target_link_libraries (${PROJECT} ${LIBRARIES})
