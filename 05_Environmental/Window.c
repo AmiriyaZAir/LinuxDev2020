@@ -22,7 +22,7 @@
     int status;
 } RegexRes;*/
 
-int regexp_find(char *regexp_pattern, char *subj_str, char *res)
+int regexp_find(WINDOW *main_win, char *regexp_pattern, char *subj_str, char *res)
 {
     pcre2_code *re;
     PCRE2_SPTR pattern;     /* PCRE2_SPTR is a pointer to unsigned code units of */
@@ -52,7 +52,7 @@ int regexp_find(char *regexp_pattern, char *subj_str, char *res)
     if (re == NULL) {
         PCRE2_UCHAR buffer[256];
         pcre2_get_error_message(errnum, buffer, sizeof(buffer));
-        printf(res, "PCRE2 compilation failed at offset %d: %s\n", (int)erroffs, buffer);
+        wprintw(main_win, "PCRE2 compilation failed at offset %d: %s\n", (int)erroffs, buffer);
         return 1;
     }
 
@@ -64,9 +64,11 @@ int regexp_find(char *regexp_pattern, char *subj_str, char *res)
         switch(rc) {
         case PCRE2_ERROR_NOMATCH:
             printf(res, "No match\n");
+            wprintw(main_win, "No match\n");
             //res->status = 1; 
             break;
         default:
+        	wprintw(main_win, "Matching error %d\n", rc);
             printf(res, "Matching error %d\n", rc);
            // res->status = 1; 
             break;
@@ -83,7 +85,9 @@ int regexp_find(char *regexp_pattern, char *subj_str, char *res)
         sprintf(res, "%2ld: %.*s\n", ovector[2*i], 
                  (int)(ovector[2*i+1] - ovector[2*i]),
                  subject + ovector[2*i]);
-
+    	wprintw(main_win, "%2ld: %.*s\n", ovector[2*i], 
+                 (int)(ovector[2*i+1] - ovector[2*i]),
+                 subject + ovector[2*i]);
     pcre2_match_data_free(match_data);  /* Release the memory that was used */
     pcre2_code_free(re);                /* for the match data and the pattern. */
 
@@ -122,7 +126,7 @@ void main() {
         box(winB, 0, 0);
         mvwgetnstr(winB, 1, 1, inB, MAXSTR);
         wprintw(winO, "%s: %s \n", inA, inB);
-        regexp_find(inA, inB, res);
+        regexp_find(winO, inA, inB, res);
         wprintw(winO, "%s\n", res);
         box(winO, 0, 0);
         wrefresh(winO);
