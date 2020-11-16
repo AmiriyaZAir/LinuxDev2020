@@ -10,7 +10,7 @@ int main()
     int low_border = 1;
     int high_border = 100;
     int middle = (high_border + low_border) / 2 ;
-    char ans;
+    char ans[256];
 
     setlocale (LC_ALL, "");
     bindtextdomain ("guess_number", ".");
@@ -21,13 +21,13 @@ int main()
     while(low_border < high_border){
         printf(_("Is your number greater than %d?\n"), middle);
         printf(_("Answer: (y/n)\n"));
-        scanf("%c", &ans);
+        scanf("%s", &ans);
 
-        if(ans == _('y')){
+        if(!strcmp(ans, _("y"))){
             low_border = middle + 1;
         }
         else 
-            if(ans == _('n'))
+            if(!strcmp(ans, _("n")))
                 high_border = middle;
             else {
                 printf(_("Wrong input. Please, try again\n"));
