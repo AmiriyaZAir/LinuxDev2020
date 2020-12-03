@@ -1,18 +1,8 @@
-### Testing coverage task
+### To get/replace comment in files *.h and *.c
 
-To compile the progect: 
 ```
 autoreconf -i
 ./configure
-make
 ```
-To run tests:
-```
-make gcov
-```
+then check files in src folder
 
-To clean the project:
-
-```
-make clean
-```
