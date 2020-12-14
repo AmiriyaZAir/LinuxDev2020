@@ -1,0 +1,48 @@
+# Guess number 
+# Anna Lapkina <do_not_provide_your_real_email_to_strangers@address>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: 1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-16 22:26+0300\n"
+"PO-Revision-Date: 2020-11-16 17:45+0000\n"
+"Last-Translator: Amiriya\n"
+"Language-Team: Russian\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: guess_number.c:19
+#, c-format
+msgid "Choose a number from 1 to 100\n"
+msgstr "Выберите число от 1 до 100\n"
+
+#: guess_number.c:22
+#, c-format
+msgid "Is your number greater than %d?\n"
+msgstr "Ваше число больше, чем %d?\n"
+
+#: guess_number.c:23
+#, c-format
+msgid "Answer: (y/n)\n"
+msgstr "Ответьте: (д/н)\n"
+
+#: guess_number.c:26
+msgid "y"
+msgstr "д"
+
+#: guess_number.c:30
+msgid "n"
+msgstr "н"
+
+#: guess_number.c:33
+#, c-format
+msgid "Wrong input. Please, try again\n"
+msgstr "Некорректный ввод. Пожалуйста, повторите\n"
+
+#: guess_number.c:38
+#, c-format
+msgid "The number you chose is %d\n"
+msgstr "Вы загадали число %d\n"
